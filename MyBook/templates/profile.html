@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+
+{% block content %}
+     <form class="form-inline">
+     <!--image form-->
+     <div class="form-group">
+   <img class="img-thumbnail" src="{{ user.profile.image.url }}"width="304" height="236" alt=" notfound"><br><br>
+    </div>
+              <!--info form-->
+
+    <div class="form-group">
+   <h2>Personel Info :</h2>
+    <h4>User_name : {{ user.username }}</h4>
+    <h5>First_Name : {{ user.first_name }}</h5>
+    <h5>Last_Name : {{ user.last_name }}</h5>
+    <h5>email : {{ user.email }}</h5>
+        <h5>Location : {{ user.profile.location}}</h5></div>
+    </form>
+    <h2>Books :</h2>
+        <div class="row">
+    {% for book in book %}
+        <div class="col-md-4">
+        <div class=" book panel panel-default">
+        <a href="/{{book.id}}/">
+        <div class="panel-heading">
+<h3 class="book panel-default">{{ book.title }}  <img src="{{book.image.url }}" height="40"></h3>
+</div>
+        </a></div></div>
+    {% endfor %}
+
+{% endblock %}

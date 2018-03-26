@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block title %}{{ details.title }}{% endblock %}
+{% block content %}
+
+<form enctype="multipart/form-data" action="/ajouter/" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="submit"/>
+</form>
+    <form action="{% url 'back' %}"> <input type="submit" name="back" value="back"></form>
+{% endblock %}

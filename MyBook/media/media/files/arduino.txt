@@ -1,0 +1,522 @@
+*********************************
+7 segemnt
+*********************************
+int a = 7;  // "a"
+int b = 6;  //"b"
+int c = 4;  // "c"
+int d = 2;  // "d"
+int e = 1;  // "e"
+int f = 9;  //"f"
+int g = 10;  // "g"
+void setup() {
+  // put your setup code here, to run once:
+
+  pinMode(a, OUTPUT);  //A
+  pinMode(b, OUTPUT);  //B
+  pinMode(c, OUTPUT);  //C
+  pinMode(d, OUTPUT);  //D
+  pinMode(e, OUTPUT);  //E
+  pinMode(f, OUTPUT);  //F
+  pinMode(g, OUTPUT);  //G
+}
+
+
+void loop()
+{
+
+
+  for (int i = 0; i < 16; i++)
+  {
+    switch (i)
+    {
+      case 0:
+        digitalWrite(a, LOW);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, LOW);
+        digitalWrite(e, LOW);
+        digitalWrite(f, LOW);
+        digitalWrite(g, HIGH);
+        break;
+      case 1:
+        digitalWrite(a, HIGH);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, HIGH);
+        digitalWrite(e, HIGH);
+        digitalWrite(f, HIGH);
+        digitalWrite(g, HIGH);
+        break;
+      case 2:
+        digitalWrite(a, LOW);
+        digitalWrite(b, LOW);
+        digitalWrite(c, HIGH);
+        digitalWrite(d, LOW);
+        digitalWrite(e, LOW);
+        digitalWrite(f, HIGH);
+        digitalWrite(g, LOW);
+        break;
+
+      case 3:
+        digitalWrite(a, LOW);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, LOW);
+        digitalWrite(e, HIGH);
+        digitalWrite(f, HIGH);
+        digitalWrite(g, LOW);
+        break;
+      case 4:
+        digitalWrite(a, HIGH);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, HIGH);
+        digitalWrite(e, HIGH);
+        digitalWrite(f, LOW);
+        digitalWrite(g, LOW);
+        break;
+      case 5:
+        digitalWrite(a, LOW);
+        digitalWrite(b, HIGH);
+        digitalWrite(c, LOW);
+        digitalWrite(d, LOW);
+        digitalWrite(e, HIGH);
+        digitalWrite(f, LOW);
+        digitalWrite(g, LOW);
+        break;
+      case 6:
+        digitalWrite(a, LOW);
+        digitalWrite(b, HIGH);
+        digitalWrite(c, LOW);
+        digitalWrite(d, LOW);
+        digitalWrite(e, LOW);
+        digitalWrite(f, LOW);
+        digitalWrite(g, LOW);
+        break;
+      case 7:
+        digitalWrite(a, LOW);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, HIGH);
+        digitalWrite(e, HIGH);
+        digitalWrite(f, HIGH);
+        digitalWrite(g, HIGH);
+        break;
+
+      case 8:
+        digitalWrite(a, LOW);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, LOW);
+        digitalWrite(e, LOW);
+        digitalWrite(f, LOW);
+        digitalWrite(g, LOW);
+        break;
+      case 9:
+        digitalWrite(a, LOW);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, HIGH);
+        digitalWrite(e, HIGH);
+        digitalWrite(f, LOW);
+        digitalWrite(g, LOW);
+        break;
+
+
+      case 10:
+        digitalWrite(a, LOW);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, HIGH);
+        digitalWrite(e, LOW);
+        digitalWrite(f, LOW);
+        digitalWrite(g, LOW);
+        break;
+      case 11:
+        digitalWrite(a, LOW);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, LOW);
+        digitalWrite(e, LOW);
+        digitalWrite(f, LOW);
+        digitalWrite(g, LOW);
+        break;
+      case 12:
+        digitalWrite(a, LOW);
+        digitalWrite(b, HIGH);
+        digitalWrite(c, HIGH);
+        digitalWrite(d, LOW);
+        digitalWrite(e, LOW);
+        digitalWrite(f, LOW);
+        digitalWrite(g, HIGH);
+        break;
+
+
+      case 13:
+        digitalWrite(a, LOW);
+        digitalWrite(b, LOW);
+        digitalWrite(c, LOW);
+        digitalWrite(d, LOW);
+        digitalWrite(e, LOW);
+        digitalWrite(f, LOW);
+        digitalWrite(g, HIGH);
+        break;
+
+      case 14:
+        digitalWrite(a, LOW);
+        digitalWrite(b, HIGH);
+        digitalWrite(c, HIGH);
+        digitalWrite(d, LOW);
+        digitalWrite(e, LOW);
+        digitalWrite(f, LOW);
+        digitalWrite(g, LOW);
+        break;
+      case 15:
+        digitalWrite(a, LOW);
+        digitalWrite(b, HIGH);
+        digitalWrite(c, HIGH);
+        digitalWrite(d, HIGH);
+        digitalWrite(e, LOW);
+        digitalWrite(f, LOW);
+        digitalWrite(g, LOW);
+        break;
+
+
+    }
+    delay(1000);
+
+  }
+}
+*********************************************************************************
+ 3 led comme triangle
+********************************************************************************
+ 
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(2,OUTPUT);
+   pinMode(4,OUTPUT);
+    pinMode(5,OUTPUT);
+  pinMode(11,INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+
+  //digitalWrite(2,LOW);
+  // put your main code here, to run repeatedly:
+//digitalWrite(2,HIGH);
+boolean state=false;
+state= digitalRead(11);
+ 
+//digitalWrite(5,HIGH);
+if (state)
+{
+  int x;
+  x=random(1,6);
+  Serial.print(x);
+  
+  switch (x)
+  {
+    case 1:
+      digitalWrite(2,HIGH);
+      digitalWrite(4,LOW);
+       digitalWrite(5,LOW);
+      break;
+    case 2:
+      digitalWrite(4,HIGH);
+      digitalWrite(2,LOW);
+      digitalWrite(5,LOW);
+      break;
+     case 3:
+       digitalWrite(2,HIGH);
+       digitalWrite(4,HIGH);
+       digitalWrite(5,LOW);
+       break;
+    case 4:
+      digitalWrite(5,HIGH);
+      digitalWrite(4,LOW);
+      digitalWrite(2,LOW);
+      break;
+    case 5:
+      digitalWrite(5,HIGH);
+       digitalWrite(2,HIGH);
+       digitalWrite(4,LOW);
+       break;
+    case 6:
+         digitalWrite(5,HIGH);
+        digitalWrite(4,HIGH);
+        digitalWrite(2,LOW);
+    break;
+  }
+ delay(2000);
+}
+else
+{
+  digitalWrite(2,LOW);
+  digitalWrite(4,LOW);
+  digitalWrite(5,LOW);
+}
+
+}
+****************************************************************************
+servooo motorrr
+****************************************************************************
+#include <Servo.h>
+Servo s1;
+
+void setup() {
+  // put your setup code here, to run once:
+s1.attach(2);
+Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+if (Serial.available() >0)
+{
+  int v= Serial.parseInt();
+if (v>= 5 && v<=170)
+{
+s1.write(v);
+delay(5);
+}
+}}
+***************************************************************************
+ moteur pas a pas
+**************************************************************************
+
+/* Moteur pas à pas est un programme qui fait tourner un moteur pas à pas dans un sens puis dans l'autre*/
+
+#include <Stepper.h>                                // appel de la bibliothèque
+
+#define enroulement_1 2                         // affectation des broches
+#define enroulement_2 3
+#define enroulement_3 4
+#define enroulement_4 5
+
+const int nombre_pas=2048;                  // nombre de pas du moteur
+
+Stepper moteur(nombre_pas, enroulement_1, enroulement_3, enroulement_2, enroulement_4);    // création de l'objet moteur
+
+void setup()   
+{
+moteur.setSpeed(10);                              // initialisation la vitesse de rotation du moteur en tour par minute
+pinMode(enroulement_1, OUTPUT);       // configuration des broches en sortie
+pinMode(enroulement_2, OUTPUT);       
+pinMode(enroulement_3, OUTPUT);     
+pinMode(enroulement_4, OUTPUT);  
+}
+
+void loop()
+{
+for (int i=1; i<=nombre_pas; i++)            // boucle avance du moteur en fonction du nombre de pas
+{
+  moteur.step(1);                                       // un pas en sens positif
+}
+for (int i=1; i<=nombre_pas; i++)            // boucle retour du moteur en fonction du nombre de pas
+{   
+  moteur.step(-1);                                     // un pas en sens négatif
+}
+}
+
+****
+
+void setup() {
+  // put your setup code here, to run once:
+pinMode(7,OUTPUT);
+//pinMode(8,INPUT);
+
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+Serial.begin(9600);
+
+
+  
+  analogWrite(7,255);
+  
+ 
+}
+*********************************************************
+sms
+************************************************
+//Définition des entrées sorties
+const int LED_PIN = 7;
+const int RELAIS=7;
+//Déclaration des variables
+word w; // valeur reçue du smartphone
+int reponse; // valeur renvoyée au smartphone
+//Initialisation des E/S et communication
+void setup() {
+Serial.begin(9600); //vitesse de transmission Bluetooth
+pinMode(LED_PIN,OUTPUT) ;
+pinMode(RELAIS,OUTPUT) ;
+}
+//Programme principal
+void loop() {
+recevoir();
+if (w>120) // vous pouvez aussi mettre ==1 en corrigeant sur les blocs de APP Inventor
+{
+digitalWrite(LED_PIN,HIGH);
+
+reponse=1;
+}
+else
+{
+digitalWrite(LED_PIN,LOW);
+
+reponse=0;
+}
+delay(1000);
+envoyer();
+}
+//procédure qui reçoit de la tablette
+void recevoir(){
+if (Serial.available()) {
+w=Serial.read();
+Serial.flush();
+}
+}
+
+void envoyer() {
+Serial.print(reponse);
+Serial.flush();
+}
+**************************************************
+
+Transferr donnne d'une carte a une autre
+
+***********************************************
+/*************************************
+// Transfert de données d'une carte arduino à une autre
+// via le port série logiciel
+// Branchements :
+// * RX connecté sur pin 10 (connecté à TX sur l'autre carte)
+// * TX connecté sur pin 11 (connect à RX sur l'autre carte)
+// * Et ne pas oublier de relier les masses des 2 cartes (GND)
+****************************************/
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(10, 11); // RX, TX
+
+void setup()  
+{ //-- Ouverture du port Série Logiciel
+  mySerial.begin(9600);
+  
+}
+
+void loop() //-- Toutes les 2 secondes envoi d'un message
+//{mySerial.write("Hello");
+{
+int sensorValue = analogRead(A0);
+mySerial.write(sensorValue);
+  // print out the value you read:
+ delay(10); //-- Attente de 0.01 secondes avant de recommencer
+}
+
+****************************************************
+Reception
+***************************************************
+/**************
+// Réception de données via le port Série Logiciel
+***************/
+//-- Déclaration du port Série Logiciel
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(10, 11); // RX, TX
+ 
+void setup() {                
+  //-- Ouverture du port Série de la carte pour le moniteur
+  Serial.begin(9600);
+  while (!Serial)
+  Serial.println("Attente reception !");
+  //-- Ouverture du port logiciel
+  mySerial.begin(9600); 
+  pinMode(6,OUTPUT);
+  digitalWrite(6,LOW); 
+}
+
+//-- Affichage de la communication
+void loop() {
+  //-- Si des données sont présentes
+  if (mySerial.available())
+    {//-- Affichage sur la console des données
+     Serial.write(mySerial.read());
+     digitalWrite(6,mySerial.read());
+    delay(200);
+    
+     
+          }
+}
+****************************************************************
+envoi
+************
+/**********************************************  
+ // Transfert de données d'une carte arduino à une autre  
+ // Ce sketch envoie le message Hello à une carte connectée  
+ // via le port série logiciel  
+ // Branchements :  
+ // * RX connecté sur pin 10 (connecté à TX sur l'autre carte)  
+ // * TX connecté sur pin 11 (connect à RX sur l'autre carte)  
+ // * Et ne pas oublier de relier les masses des 2 cartes (GND)  
+ // Remarque :  
+ // Sur la MEGA utilisez uniquement pour RX:   
+ // 10, 11, 12, 13, 50, 51, 52, 53, 62, 63, 64, 65, 66, 67, 68, 69  
+ // Sur la Leonardo utilisez uniquement pour RX:  
+ // 8, 9, 10, 11, 14 (MISO), 15 (SCK), 16 (MOSI).  
+ ****************************************/  
+ #include <SoftwareSerial.h>  
+ int led = 13;  
+ SoftwareSerial mySerial(10, 11); // RX, TX  
+ void setup()   
+ { //-- définition du port Série Logiciel  
+  mySerial.begin(57600);   
+  pinMode(led, OUTPUT);  
+ }  
+ void loop() //-- Toutes les 2 secondes envoi d'un message  
+ {if (mySerial.available())  
+  {digitalWrite(led, HIGH); //-- Pendant l'envoi allume la LED  
+  mySerial.write("Hello");  
+  }  
+  digitalWrite(led, LOW);  
+  delay(2000); //-- Attente de 2 secondes avant de recommencer  
+ }  
+
+*********************************
+reception
+////**********
+*************
+
+/**************  
+ // Réception de données via le port Série Logiciel :  
+ // Testé avec une NANO 328   
+ // Attention les câbles RX et TX doivent être croisés   
+ // Ne pas oublier de relier les masses des 2 cartes (GND)  
+ // entre la carte émitrice et la carte réceptrice !  
+ ***************/  
+ //-- Déclaration du port Série Logiciel  
+ #include <SoftwareSerial.h>  
+ SoftwareSerial mySerial(10, 11); // RX, TX  
+ //-- Mise en fonction de la LED lorsqu'un message est reçu  
+ int led = 13;  
+ //-- Setup  
+ void setup() {          
+  //-- Initialisation de la LED  
+  pinMode(led, OUTPUT);  
+  //-- Ouverture du port Série de la carte pour le moniteur  
+  Serial.begin(9600);  
+  while (!Serial) {;} //-- Pour Leonaro nécessaire  
+  Serial.println("Attente réception !");  
+  //-- Définition et ouverture du port logiciel  
+  mySerial.begin(57600);   
+ }  
+ //-- Affichage de la communication  
+ void loop() {  
+  //-- Si des données sont présentes  
+  if (mySerial.available())  
+   {//-- Affichage sur la console des données  
+    Serial.write(mySerial.read());}  
+ }  *******
+

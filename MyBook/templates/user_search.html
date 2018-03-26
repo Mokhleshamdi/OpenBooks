@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block title %}OpenBook{% endblock %}
+{% block content %}
+<ul>
+
+{% for user in users %}
+    <li><a href="{% url 'User_update' user.pk %}">{{user.username}}</a></li>
+{% endfor %}
+</ul>
+        <form action="{% url 'back' %}"> <input type="submit" name="back" value="back"></form>
+{% endblock %}

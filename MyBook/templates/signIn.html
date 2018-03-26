@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+
+{% block content %}
+<form method="post" >
+    {% csrf_token %}
+    {{form.as_p}}
+       <form action="{% url 'signIn' %}"> <input type="submit" name="confirm" value="confirm"></form>
+
+</form>
+    <form action="{% url 'login' %}"> <input type="submit" name="back" value="back"></form>
+{% endblock %}

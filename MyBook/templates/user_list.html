@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block title %}OpenBook{% endblock %}
+{% block content %}
+ <form action="{% url 'user_search' %}">
+    <input type="text" placeholder="user search" name='q'>
+    <input type="submit" value="search">
+</form>
+
+<form action="{% url 'back' %}"> <input type="submit" name="back" value="back"></form>
+  <h2>Our Users</h2>
+
+  <div class="row">
+    {% for p in Profile %}
+      <div class="col-md-4">
+        <a href="{% url 'profile' p.username %}">
+             {{ p.username }}<br>
+            <img src="{{ p.image.url }}" class="img-thumbnail" width="180" height="180"></a>
+
+          <form action="{% url 'User_update' p.id %}"> <input type="submit" name="update" value="update"></form><br>
+              <form action="{%  url 'delete_user' p.id %}"> <input type="submit" name="delete" value="delete"></form>
+
+       <br>
+
+      </div>
+    {% endfor %}
+
+  </div>
+
+
+
+{% endblock %}

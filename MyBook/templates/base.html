@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!DOCTYPE html >
+<html >
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+{% if user.is_authenticated %}
+<nav class="navbar navbar-default  text-center">
+
+
+
+
+<a class="navbar-text navbar-right"
+href="{% url 'profile' user.username %}"><img src="{{ user.profile.image.url }}" height="20" alt=" notfound">{{ user.username }}</a>
+
+   <a class="navbar-text navbar-right nav-divider" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> logout</a>
+    <a class="navbar-text navbar-right nav-divider" href="{%  url 'ajouter' %}"><span class="glyphicon glyphicon-plus"></span> livre </a>
+     <a  class="navbar-text navbar-right nav-divider"
+        href="{%  url 'user_list' %}"><span class="glyphicon glyphicon-list"></span> users</a>
+     <a  class="navbar-text navbar-right nav-divider"
+        href="{%  url 'user_add' %}"><span class="glyphicon glyphicon-plus"></span> user</a>
+
+
+
+{% endif %}
+</form>
+</nav>
+<div id="container">
+	<div id="header">
+    	<h1><a href="/index">Open Books</a></h1>
+        <h2>Books for every one </h2>
+        <div class="clear"></div>
+    </div>
+
+    <div id="body">
+
+{% block content %}{% endblock  %}
+
+    </div>
+    <div class="footer-width footer-bottom">
+        <p>&copy; FreeBooks.</p>
+     </div>
+<script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block title %}OpenBook{% endblock %}
+{% block content %}
+<form method="GET" action="">
+        <input type="text" name="q" placeholder="search post" value="{{ request.GET.q }}" alt="not found"/>
+
+       <input type="submit" class="btn btn-default btn-sm " value="Search"/>
+          <span class="glyphicon glyphicon-search">
+        </span>
+  <h2>Introduction</h2>
+
+  <p>Looking for free ebooks? BookBub features limited-time offers for the best free books in over twenty genres, from both top-tier publishers and critically-acclaimed independent authors. These free ebooks are available on all devices, including Kindle, Nook, iPad, and Android. Check out some of our current selections:</p>
+
+  <p>You can find here all Programming Books</p>
+
+  <ul class="styledlist">
+    <li>Security</li>
+    <li>BigData</li>
+    <li>WebDevelopement</li>
+    <li>EmbeddedSystems</li>
+  </ul>
+
+  <h2>Our Books</h2>
+
+  <div class="row">
+    {% for b in book %}
+      <div class="col-md-4">
+        <a href="/{{ b.id }}/">
+          <h3>{{ b.title }}</h3>
+            <a class="panel-username" href="/user/{{b.user.username}}/">
+                by: {{ b.user.username }}</a>
+
+            <br>
+            <img src="{{ b.image.url }}" height="100"></a><br>
+      <button id ="likes" data-id="{{b.id}}"
+class="btn btn-mini btn-danger glyphicon glyphicon-heart"
+type="button">
+{% if b.likes > 0 %} {{ b.likes }} {% endif %}
+</button>
+      </div>
+    {% endfor %}
+  </div>
+
+  <br>
+
+
+
+{% endblock %}

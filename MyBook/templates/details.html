@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+
+{% block content %}
+
+<h1>nom de livre:{{ book.title }}</h1>
+        <img src="{{ book.image.url }}" height="200" alt="image"/><br>
+        <a href="{{ book.file.url }}">
+          <span class="glyphicon glyphicon-download-alt"></span> Download
+
+        </a>
+         <p> l'auteur: {{ book.author.first_name }}</p><br>
+        <p style="text-align:justify;">{{book.summary|truncatechars:100}}</p>
+    <h6>like :</h6>
+    <button id ="likes" data-id="{{book.id}}"
+class="btn btn-mini btn-danger glyphicon glyphicon-heart"
+type="button">
+{% if book.likes > 0 %} {{ book.likes }} {% endif %}
+        </button>
+    <br><br>
+
+
+         <form action="{%  url 'delete' book.id %}"><input type="submit" name="delete" value ="delete"></form>
+<br>
+
+        <form action="{% url 'update' book.id %}"> <input type="submit" name="edit" value="edit"></form>
+    <br>
+    <form action="{% url 'back' %}"> <input type="submit" name="back" value="back"></form>
+    {% if user.is_authenticated %}
+
+    <form action="{% url 'book_comment' book.pk %}" method="post">
+        {% csrf_token %}
+
+        {{commentform}}
+        <input type="submit" value="comment">
+    </form>
+            {% if borrowed_book %}
+    <form action="{% url 'book_return' book.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="return">
+    </form>
+    {% else %}
+    <form action="{% url 'book_borrow' book.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="borrow">
+    </form>
+
+    {% endif %}
+        {% endif %}
+<hr>
+{% for comment in comments %}
+    <p><a href="{% url 'profile' comment.comment_author.username %}">{{comment.comment_author}}</a> : {{comment.content}}</p>
+
+{% endfor %}
+
+
+{% endblock %}
